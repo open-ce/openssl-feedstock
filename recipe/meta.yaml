@@ -1,0 +1,33 @@
+{% set name = "openssl" %}
+{% set version = "1.1.1zz" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+build:
+  number: 1
+
+requirements:
+  run:
+    - zlib
+    - ca-certificates
+
+about:
+  home: https://www.openssl.org/
+  license: OpenSSL
+  license_family: Apache
+  summary: OpenSSL stub package
+  dev_url: https://github.com/openssl/openssl
+  doc_url: https://www.openssl.org/docs/man1.1.1/
+
+test:
+  requires:
+     - python
+     - {{ compiler('c') }}
+  files:
+     - tests/testfips.c
+
+extra:
+  recipe-maintainers:
+    - open-ce/open-ce-dev-team
